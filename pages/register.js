@@ -15,7 +15,9 @@ export default function Register({ selected }) {
 export async function getServerSideProps(context) {
   try {
     const { day, month } = context.query;
-    let res = await axios.get(`http://localhost:3000/api/registrations`);
+    let res = await axios.get(
+      `${process.env.NEXT_PUBLIC_ROOT}/api/registrations`
+    );
 
     const selected = [];
 

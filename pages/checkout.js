@@ -13,10 +13,13 @@ export default function Checkout({ message }) {
 export async function getServerSideProps(context) {
   try {
     const { reg, mon } = context.query;
-    let res = await axios.patch(`http://localhost:3000/api/registrations`, {
-      reg,
-      mon,
-    });
+    let res = await axios.patch(
+      `${process.env.NEXT_PUBLIC_ROOT}/api/registrations`,
+      {
+        reg,
+        mon,
+      }
+    );
     return {
       props: {
         message: "Success",

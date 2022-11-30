@@ -22,8 +22,8 @@ export default async function handler(req, res) {
   const session = await stripe.checkout.sessions.create({
     line_items: [item],
     mode: "payment",
-    success_url: `http://localhost:3000/checkout?reg=${req.body.reg}&mon=${req.body.mon}`,
-    cancel_url: "http://localhost:3000/calendar",
+    success_url: `${process.env.NEXT_PUBLIC_ROOT}/checkout?reg=${req.body.reg}&mon=${req.body.mon}`,
+    cancel_url: `${process.env.NEXT_PUBLIC_ROOT}/calendar`,
   });
 
   res.status(200).json({ session });

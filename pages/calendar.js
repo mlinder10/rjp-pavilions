@@ -25,8 +25,10 @@ export default function Cal({ months, regs }) {
 
 export async function getServerSideProps(context) {
   try {
-    let res = await axios.get(`http://localhost:3000/months.json`);
-    let resII = await axios.get(`http://localhost:3000/api/registrations`);
+    let res = await axios.get(`${process.env.NEXT_PUBLIC_ROOT}/months.json`);
+    let resII = await axios.get(
+      `${process.env.NEXT_PUBLIC_ROOT}/api/registrations`
+    );
     return {
       props: {
         months: res.data,
