@@ -1,0 +1,32 @@
+.inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  width: 100%;
+  padding-inline: 48px;
+}
+
+.radio-wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 32px;
+  gap: 16px;
+}
+
+.radio {
+  width: 16px;
+  aspect-ratio: 1/1;
+  border-radius: 100%;
+  border: thin solid blue;
+  cursor: pointer;
+}
+
+.checked {
+  background-color: blue;
+}
+
+.disabled {
+  border-color: red;
+  cursor: default;
+  pointer-events: none;
+}

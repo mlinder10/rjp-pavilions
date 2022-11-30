@@ -1,0 +1,74 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 64px;
+}
+
+.upper {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  position: absolute;
+  top: 32px;
+  right: 64px;
+  align-items: flex-start;
+}
+
+.upper div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-content: left;
+}
+
+.upper p {
+  font-weight: bold;
+}
+
+.month-wrapper {
+  margin-top: 144px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+.month {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  width: 80vw;
+  gap: 8px;
+}
+
+.name {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.day {
+  height: 32px;
+  background-color: #eee9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 16px;
+}
+
+.day-wrapper {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.box {
+  width: 10px;
+  aspect-ratio: 1/1;
+}

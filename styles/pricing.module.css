@@ -1,0 +1,30 @@
+.grid {
+  display: grid;
+  grid-template-columns: 0.5fr 1fr 1fr 1fr;
+  text-align: center;
+  width: 80%;
+  margin-inline: 10%;
+}
+
+.grid > div {
+  border: thin solid black;
+}
+
+.grid > div p {
+  border-bottom: thin solid black;
+  font-weight: bold;
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+}
+
+.gridII {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.spacer {
+  height: 16px;
+}

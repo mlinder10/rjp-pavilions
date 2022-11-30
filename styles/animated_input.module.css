@@ -1,0 +1,25 @@
+.input-wrapper {
+  position: relative;
+}
+
+.input-wrapper label {
+  position: absolute;
+  bottom: 50%;
+  left: 8px;
+  translate: 0 50%;
+  pointer-events: none;
+  transition: 0.3s;
+}
+
+.input-wrapper input {
+  padding-left: 8px;
+  border: none;
+  outline: none;
+  background-color: #eee;
+}
+
+.input-wrapper.active label {
+  translate: 0;
+  bottom: 105%;
+  left: 0;
+}
