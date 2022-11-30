@@ -4,7 +4,7 @@ import styles from "/styles/calendar.module.css";
 
 const GAP = 0;
 
-export default function Calendar({ months }) {
+export default function Calendar({ months, regs }) {
   return (
     <div className={styles.wrapper}>
       <div className={styles.upper}>
@@ -32,7 +32,7 @@ export default function Calendar({ months }) {
         </div>
       </div>
       {months.map((month) => (
-        <Month gap={GAP} key={month.name} month={month} />
+        <Month gap={GAP} key={month.name} month={month} regs={regs} />
       ))}
     </div>
   );

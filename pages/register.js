@@ -15,19 +15,13 @@ export default function Register({ selected }) {
 export async function getServerSideProps(context) {
   try {
     const { day, month } = context.query;
-    let dbMonth;
-    let res = await axios.get(`http://localhost:3000/api/calendar`);
-
-    res.data.forEach((m) => {
-      if (m.name === month) dbMonth = m;
-    });
+    let res = await axios.get(`http://localhost:3000/api/registrations`);
 
     const selected = [];
 
-    dbMonth.registrations.forEach((r) => {
-      if (r.dateRequested + 1 == day && r.approved) {
+    res.data.forEach((r) => {
+      if (r.month === month && r.day === day - 1 && r.approved)
         selected.push(r.shelterRequested);
-      }
     });
 
     return {

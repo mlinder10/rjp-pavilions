@@ -2,7 +2,7 @@ import React from "react";
 import Day from "./Day";
 import styles from "/styles/calendar.module.css";
 
-export default function Month({ month, gap = 0 }) {
+export default function Month({ month, regs, gap = 0 }) {
   function getStart() {
     let days = [];
     for (let i = 0; i < gap + month.gap; i++) {
@@ -18,9 +18,8 @@ export default function Month({ month, gap = 0 }) {
       days.push({});
     }
 
-    month.registrations.forEach((r) => {
-      if (r.approved) days[r.dateRequested] = r;
-      console.log(r);
+    regs.forEach((r) => {
+      if (r.approved) days[r.day] = r;
     });
 
     return days;

@@ -48,15 +48,5 @@
     "name": "October",
     "days": 31,
     "gap": 0
-    },
-    {
-    "name": "November",
-    "days": 30,
-    "gap": 3
-    },
-    {
-    "name": "December",
-    "days": 31,
-    "gap": 5
     }
 ]
