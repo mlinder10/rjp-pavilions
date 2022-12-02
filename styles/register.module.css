@@ -1,32 +1,160 @@
-.inputs {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
+.main {
+  min-height: 100vh;
+  background-color: #ddd;
+  position: absolute;
   width: 100%;
-  padding-inline: 48px;
+  display: flex;
+  justify-content: center;
 }
 
-.radio-wrapper {
+.calendar {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  position: absolute;
+  top: 32px;
+  left: 64px;
+}
+
+.calendar::after {
+  content: "";
+  position: absolute;
+  top: 110%;
+  left: 0;
+  height: 6px;
+  border-radius: 10px;
+  width: 50%;
+  background-color: forestgreen;
+  transition: 0.3s ease-out;
+}
+
+.calendar:hover::after {
+  width: 70%;
+}
+
+.form {
+  border-radius: 10px;
+  padding: 32px;
+  background-color: #eee;
+  box-shadow: 0 0 5px #bbb;
+  margin-top: 128px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 128px;
+}
+
+.info {
+  position: absolute;
+  top: 32px;
+  right: 64px;
+  background-color: #eee;
+  box-shadow: 0 0 5px #bbb;
+  border-radius: 5px;
+  padding: 12px 24px;
+  gap: 4px;
   display: flex;
   flex-direction: column;
-  margin: 32px;
-  gap: 16px;
+}
+
+.info span {
+  font-weight: bold;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
 .radio {
-  width: 16px;
-  aspect-ratio: 1/1;
-  border-radius: 100%;
-  border: thin solid blue;
+  display: flex;
+  gap: 32px;
+}
+
+.radio > div,
+.time > div {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.time {
+  display: flex;
+  gap: 32px;
+}
+
+.radio-label,
+.time-label {
+  font-weight: bold;
+  color: forestgreen;
+}
+
+.btn {
+  margin-top: 80px;
+  margin-inline: calc(50% - 48px);
+  border: none;
+  outline: none;
+  width: 96px;
+  height: 40px;
+  border-radius: 5px;
+  background-color: forestgreen;
+  color: #eee;
   cursor: pointer;
+  transition: 0.3s;
 }
 
-.checked {
-  background-color: blue;
+.btn:hover {
+  box-shadow: 0 0 10px forestgreen;
 }
 
-.disabled {
-  border-color: red;
-  cursor: default;
-  pointer-events: none;
+@media (width < 700px) {
+  .grid {
+    gap: 0px;
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .radio {
+    font-size: 12px;
+  }
+
+  .text {
+    font-size: 12px;
+  }
+
+  .time {
+    font-size: 12px;
+  }
+
+  .btn {
+    margin-top: 32px;
+  }
+}
+
+@media (width < 600px) {
+  .calendar {
+    left: 32px;
+  }
+
+  .info {
+    right: 32px;
+    font-size: 12px;
+    padding: 12px;
+  }
+}
+
+@media (width < 400px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 64px;
+  }
 }

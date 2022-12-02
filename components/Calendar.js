@@ -11,21 +11,21 @@ export default function Calendar({ months, regs }) {
         <p>Key</p>
         <div>
           <span
-            style={{ backgroundColor: "blue" }}
+            style={{ backgroundColor: "forestgreen" }}
             className={styles.box}
           ></span>
           <label>Upper</label>
         </div>
         <div>
           <span
-            style={{ backgroundColor: "red" }}
+            style={{ backgroundColor: "saddlebrown" }}
             className={styles.box}
           ></span>
           <label>Lower</label>
         </div>
         <div>
           <span
-            style={{ backgroundColor: "green" }}
+            style={{ backgroundColor: "goldenrod" }}
             className={styles.box}
           ></span>
           <label>Hamlet</label>

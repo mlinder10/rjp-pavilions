@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import styles from "/styles/index.module.css";
 
 export default function Home() {
@@ -8,8 +7,10 @@ export default function Home() {
       <div className={styles.left}>
         <p className={styles.watermark}>Russell Joy Park</p>
         <div className={styles.info}>
-          <h1>Russell Joy Park</h1>
-          <h2>105 Howard Street, Fredonia, NY</h2>
+          <div>
+            <h1>Russell Joy Park</h1>
+            <h2>105 Howard Street, Fredonia, NY</h2>
+          </div>
           <div className={styles.btns}>
             <Link className={styles.link} href="/calendar">
               Book a Pavilion
@@ -18,9 +19,14 @@ export default function Home() {
               See Pricing
             </Link>
           </div>
-          <Link className={styles.linkIII} href="/contact">
-            Send Us A Message
-          </Link>
+          <a
+            className={styles.linkIII}
+            href="https://www.villageoffredoniany.com/contact-us.html"
+            target="_blank"
+          >
+            <span className="material-symbols-outlined">send</span>
+            <p>Send Us A Message</p>
+          </a>
         </div>
       </div>
       <div className={styles.img}></div>

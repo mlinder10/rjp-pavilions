@@ -1,5 +1,6 @@
 .input-wrapper {
   position: relative;
+  width: fit-content;
 }
 
 .input-wrapper label {
@@ -20,6 +21,23 @@
 
 .input-wrapper.active label {
   translate: 0;
-  bottom: 105%;
+  bottom: 110%;
   left: 0;
+  color: forestgreen;
+  font-weight: bold;
+}
+
+.input-wrapper::after {
+  position: absolute;
+  content: "";
+  left: 0;
+  top: 140%;
+  width: 0;
+  height: 2px;
+  transition: 0.3s ease-out;
+  background-color: forestgreen;
+}
+
+.input-wrapper.active::after {
+  width: 100%;
 }

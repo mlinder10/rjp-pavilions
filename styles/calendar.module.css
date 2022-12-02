@@ -3,23 +3,27 @@
   flex-direction: column;
   align-items: center;
   gap: 64px;
+  background-color: #ddd;
 }
 
 .wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 64px;
 }
 
 .upper {
   display: flex;
-  gap: 16px;
+  gap: 8px;
   flex-direction: column;
   position: absolute;
   top: 32px;
   right: 64px;
   align-items: flex-start;
+  background-color: #eee;
+  padding: 16px 32px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px #bbb;
 }
 
 .upper div {
@@ -31,6 +35,8 @@
 
 .upper p {
   font-weight: bold;
+  font-size: 18px;
+  align-self: center;
 }
 
 .month-wrapper {
@@ -38,37 +44,112 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
+  gap: 48px;
 }
 
 .month {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, 10vw);
   width: 80vw;
-  gap: 8px;
+  gap: 16px;
 }
 
 .name {
-  font-size: 20px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.month > span {
+  text-align: center;
   font-weight: bold;
 }
 
 .day {
   height: 32px;
-  background-color: #eee9;
+  background-color: #eee;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding-inline: 16px;
+  border-radius: 10px;
+  box-shadow: 0 0 5px #bbb;
 }
 
 .day-wrapper {
   display: flex;
-  gap: 16px;
   align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .box {
   width: 10px;
-  aspect-ratio: 1/1;
+  height: 10px;
+  color: transparent;
+  border-radius: 100%;
+}
+
+.home {
+  position: absolute;
+  top: 32px;
+  left: 64px;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.home::after {
+  content: "";
+  position: absolute;
+  top: 120%;
+  left: 0;
+  width: 50%;
+  height: 6px;
+  border-radius: 10px;
+  transition: 0.3s ease-in-out;
+  background-color: forestgreen;
+}
+
+.home:hover::after {
+  width: 70%;
+}
+
+@media (width < 1000px) {
+  .month {
+    grid-template-columns: repeat(7, 13.8vw);
+    gap: 0;
+    width: 100%;
+  }
+
+  .day {
+    box-shadow: none;
+    border-radius: none;
+    border-radius: 0;
+    border: thin solid #bbb;
+    min-height: 96px;
+  }
+
+  .day-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    gap: 4px;
+    padding-block: 8px;
+  }
+}
+
+@media (width <= 600px) {
+  .home {
+    left: 32px;
+  }
+
+  .upper {
+    scale: 0.8;
+    right: 16px;
+    top: 16px;
+  }
 }

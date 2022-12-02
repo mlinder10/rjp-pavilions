@@ -12,22 +12,28 @@ export default function Day({ month, date, day }) {
         <span className={styles.date}>{date}</span>
         <div
           style={{
-            backgroundColor: day.shelterRequested === "upper" ? "blue" : "",
+            backgroundColor: day.upper !== undefined ? "forestgreen" : "",
           }}
           className={styles.box}
-        />
+        >
+          .
+        </div>
         <div
           style={{
-            backgroundColor: day.shelterRequested === "lower" ? "red" : "",
+            backgroundColor: day.lower !== undefined ? "saddlebrown" : "",
           }}
           className={styles.box}
-        />
+        >
+          .
+        </div>
         <div
           style={{
-            backgroundColor: day.shelterRequested === "hamlet" ? "green" : "",
+            backgroundColor: day.hamlet !== undefined ? "goldenrod" : "",
           }}
           className={styles.box}
-        />
+        >
+          .
+        </div>
       </div>
     </Link>
   );

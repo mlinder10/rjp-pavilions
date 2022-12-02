@@ -7,15 +7,8 @@ import styles from "/styles/calendar.module.css";
 export default function Cal({ months, regs }) {
   return (
     <main className={styles.main}>
-      <Link
-        style={{
-          position: "absolute",
-          top: "32px",
-          left: "64px",
-          fontWeight: "bold",
-        }}
-        href="/"
-      >
+      <Link className={styles.home} href="/">
+        <span className="material-symbols-outlined">home</span>
         Home
       </Link>
       <Calendar months={months} regs={regs} />

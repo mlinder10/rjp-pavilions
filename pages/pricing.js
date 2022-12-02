@@ -4,65 +4,61 @@ import styles from "/styles/pricing.module.css";
 
 export default function pricing() {
   return (
-    <div>
-      <Link href="/">Home</Link>
-      <div className={styles.spacer}></div>
-      <div className={styles.grid}>
-        <div className={styles.col}>
-          <div className={styles.spacer}></div>
-          <div className={styles.spacer}></div>
-          <div className={styles.spacer}></div>
-          <span>Upper (Kiwanis)</span>
-          <span>Lower (Rotary)</span>
-          <span>Hamlet Street</span>
+    <main className={styles.main}>
+      <Link className={styles.home} href="/">
+        <span class="material-symbols-outlined">home</span>Home
+      </Link>
+      <section className={styles.card}>
+        <div className={styles.upper}>
+          <p className={`${styles.header} ${styles.u}`}>Residents</p>
         </div>
-        <div>
-          <p>Residents</p>
-          <div className={styles.spacer}></div>
-          <div className={styles.gridII}>
-            <div className={styles.col}>
-              <span>Mon-Fri</span>
-              <span>$25.00</span>
-              <span>$25.00</span>
-              <span>$15.00</span>
-            </div>
-            <div className={styles.col}>
-              <span>Sat-Sun</span>
-              <span>$40.00</span>
-              <span>$40.00</span>
-              <span>$25.00</span>
-            </div>
-          </div>
-        </div>
-        <div>
-          <p>Non-Profits</p>
-          <div className={styles.spacer}></div>
-          <div className={styles.gridII}>
-            <div className={styles.col}>
-              <span>Mon-Fri</span>
-              <span>$20.00</span>
-              <span>$20.00</span>
-              <span>$15.00</span>
-            </div>
-            <div className={styles.col}>
-              <span>Sat-Sun</span>
-              <span>$25.00</span>
-              <span>$25.00</span>
-              <span>$20.00</span>
-            </div>
-          </div>
-        </div>
-        <div>
-          <p>Non-Residents</p>
-          <div className={styles.spacer}></div>
+        <div className={styles.lower}>
           <div className={styles.col}>
-            <div className={styles.spacer}></div>
-            <span>$50.00</span>
-            <span>$50.00</span>
-            <span>$35.00</span>
+            <p className={styles["col-header"]}>Mon-Fri</p>
+            <span className={styles.price}>$25.00</span>
+            <span className={styles.price}>$25.00</span>
+            <span className={styles.price}>$15.00</span>
+          </div>
+          <div className={styles.col}>
+            <p className={styles["col-header"]}>Sat-Sun</p>
+            <span className={styles.price}>$40.00</span>
+            <span className={styles.price}>$40.00</span>
+            <span className={styles.price}>$25.00</span>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+      <section className={styles.card}>
+        <div className={styles.upper}>
+          <p className={`${styles.header} ${styles.l}`}>Non-Profits</p>
+        </div>
+        <div className={styles.lower}>
+          <div className={styles.col}>
+            <p className={styles["col-header"]}>Mon-Fri</p>
+            <span className={styles.price}>$25.00</span>
+            <span className={styles.price}>$25.00</span>
+            <span className={styles.price}>$15.00</span>
+          </div>
+          <div className={styles.col}>
+            <p className={styles["col-header"]}>Sat-Sun</p>
+            <span className={styles.price}>$40.00</span>
+            <span className={styles.price}>$40.00</span>
+            <span className={styles.price}>$25.00</span>
+          </div>
+        </div>
+      </section>
+      <section className={styles.card}>
+        <div className={styles.upper}>
+          <p className={`${styles.header} ${styles.h}`}>Non-Residents</p>
+        </div>
+        <div className={`${styles.lower} ${styles.last}`}>
+          <div className={styles.col}>
+            <p className={styles["col-header"]}>Mon-Fri</p>
+            <span className={`${styles.price} ${styles.last}`}>$25.00</span>
+            <span className={`${styles.price} ${styles.last} `}>$25.00</span>
+            <span className={`${styles.price} ${styles.last}`}>$15.00</span>
+          </div>
+        </div>
+      </section>
+    </main>
   );
 }

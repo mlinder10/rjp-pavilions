@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import AnimatedInput from "./inputs/AnimatedInput";
 import RadioSelect from "./inputs/RadioSelect";
 import Time from "./inputs/Time";
+import styles from "/styles/register.module.css";
 
 const DAYS = {
   1: "Sunday",
@@ -15,18 +16,26 @@ const DAYS = {
   0: "Saturday",
 };
 
+const NAMES = {
+  upper: "Upper Pavilion",
+  lower: "Lower Pavilion",
+  hamlet: "Hamlet Street Pavilion",
+};
+
 export default function Form({ selected }) {
   const router = useRouter();
   const { month, day, wkd } = router.query;
   const [form, setForm] = useState({ month, day, price: "Enter All Fields" });
 
   async function reserve() {
+    if (!checkFields()) return window.alert("Please Enter All Fields");
+
     try {
       let r = await axios.post("/api/registrations", form);
       const id = r.data.message;
 
       let res = await axios.post("/api/checkout", {
-        name: form.location,
+        name: NAMES[form.location],
         unit_amount: parseFloat(form.price.slice(1)),
         reg: id,
         mon: month,
@@ -79,84 +88,113 @@ export default function Form({ selected }) {
     }
   }
 
+  function checkFields() {
+    if (
+      form.name === undefined ||
+      form.address === undefined ||
+      form.email === undefined ||
+      form.phone === undefined ||
+      form.partySize === undefined ||
+      form.organizationName === undefined ||
+      form.location === undefined ||
+      form.residency === undefined ||
+      form.arrivalTime === "00:00am" ||
+      form.departureTime === "00:00am"
+    )
+      return false;
+    return true;
+  }
+
   useEffect(calculatePrice, [form.location, form.residency]);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "16px",
-        margin: "32px",
-      }}
-    >
-      <p>
-        {DAYS[wkd]}, {month} {day}
-      </p>
-      <p>Price: {form.price}</p>
-      <AnimatedInput
-        label="Name"
-        type="text"
-        setVal={changeForm}
-        objKey="name"
-      />
-      <AnimatedInput
-        label="Address"
-        type="text"
-        setVal={changeForm}
-        objKey="address"
-      />
-      <AnimatedInput
-        label="Email"
-        type="email"
-        setVal={changeForm}
-        objKey="email"
-      />
-      <AnimatedInput
-        label="Phone"
-        type="phone"
-        setVal={changeForm}
-        objKey="phone"
-      />
-      <AnimatedInput
-        label="Party Size"
-        type="number"
-        setVal={changeForm}
-        objKey="partySize"
-      />
-      <AnimatedInput
-        label="Organization Name"
-        type="text"
-        setVal={changeForm}
-        objKey="organizationName"
-      />
-      <div>
-        <label>Arrival</label>
-        <Time setVal={changeForm} objKey="arrivalTime" />
+    <div className={styles.form}>
+      <div className={styles.info}>
+        <span>
+          {DAYS[wkd]}, {month} {day}
+        </span>
+        <p>
+          <span>Price:</span> {form.price}
+        </p>
       </div>
-      <div>
-        <label>Departure</label>
-        <Time setVal={changeForm} objKey="departureTime" />
+      <div className={styles.grid}>
+        <div className={styles.text}>
+          <AnimatedInput
+            label="Name"
+            type="text"
+            setVal={changeForm}
+            objKey="name"
+          />
+          <AnimatedInput
+            label="Address"
+            type="text"
+            setVal={changeForm}
+            objKey="address"
+          />
+          <AnimatedInput
+            label="Email"
+            type="email"
+            setVal={changeForm}
+            objKey="email"
+          />
+          <AnimatedInput
+            label="Phone"
+            type="phone"
+            setVal={changeForm}
+            objKey="phone"
+          />
+          <AnimatedInput
+            label="Party Size"
+            type="number"
+            setVal={changeForm}
+            objKey="partySize"
+          />
+          <AnimatedInput
+            label="Organization Name"
+            type="text"
+            setVal={changeForm}
+            objKey="organizationName"
+          />
+        </div>
+        <div className={styles.right}>
+          <div className={styles.radio}>
+            <div>
+              <label className={styles["radio-label"]}>Pavilion</label>
+              <RadioSelect
+                objKey="location"
+                setVal={changeForm}
+                options={["upper", "lower", "hamlet"]}
+                disabled={selected}
+              />
+            </div>
+            <div>
+              <label className={styles["radio-label"]}>
+                Fredonia Residency
+              </label>
+              <RadioSelect
+                objKey="residency"
+                setVal={changeForm}
+                options={["resident", "non-resident", "non-profit"]}
+                disabled={selected}
+              />
+            </div>
+          </div>
+          <div></div>
+          <div className={styles.time}>
+            <div>
+              <label className={styles["time-label"]}>Arrival</label>
+              <Time setVal={changeForm} objKey="arrivalTime" />
+            </div>
+            <div>
+              <label className={styles["time-label"]}>Departure</label>
+              <Time setVal={changeForm} objKey="departureTime" />
+            </div>
+          </div>
+        </div>
       </div>
-      <div>
-        <label>Pavilion</label>
-        <RadioSelect
-          objKey="location"
-          setVal={changeForm}
-          options={["upper", "lower", "hamlet"]}
-          disabled={selected}
-        />
-      </div>
-      <div>
-        <label>Fredonia Residency</label>
-        <RadioSelect
-          objKey="residency"
-          setVal={changeForm}
-          options={["resident", "non-resident", "non-profit"]}
-          disabled={selected}
-        />
-      </div>
-      <button onClick={reserve}>Reserve</button>
+      <button className={styles.btn} onClick={reserve}>
+        Reserve
+      </button>
     </div>
   );
 }

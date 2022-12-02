@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import styles from "/styles/animated_input.module.css";
+import styles from "/styles/components/animated_input.module.css";
 
 export default function AnimatedInput({ label, type, setVal, objKey }) {
   const [active, setActive] = useState(false);

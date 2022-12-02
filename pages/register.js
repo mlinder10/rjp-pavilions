@@ -5,10 +5,13 @@ import Form from "../components/Form";
 
 export default function Register({ selected }) {
   return (
-    <div>
-      <Link href="/calendar">Calendar</Link>
+    <main className={styles.main}>
+      <Link href="/calendar" className={styles.calendar}>
+        <span className="material-symbols-outlined">calendar_month</span>
+        Calendar
+      </Link>
       <Form selected={selected} />
-    </div>
+    </main>
   );
 }
 

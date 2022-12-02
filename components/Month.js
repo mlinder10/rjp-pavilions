@@ -19,7 +19,8 @@ export default function Month({ month, regs, gap = 0 }) {
     }
 
     regs.forEach((r) => {
-      if (r.approved) days[r.day] = r;
+      if (r.approved && r.month === month.name)
+        days[r.day][r.shelterRequested] = r;
     });
 
     return days;
@@ -29,13 +30,20 @@ export default function Month({ month, regs, gap = 0 }) {
     <div className={styles["month-wrapper"]}>
       <p className={styles.name}>{month.name}</p>
       <div className={styles.month}>
-        <span>Sunday</span>
-        <span>Monday</span>
-        <span>Tuesday</span>
-        <span>Wednesday</span>
-        <span>Thursday</span>
-        <span>Friday</span>
-        <span>Saturday</span>
+        <span>Sun</span>
+        <span>Mon</span>
+        <span>Tue</span>
+        <span>Wed</span>
+        <span>Thu</span>
+        <span>Fri</span>
+        <span>Sat</span>
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
+        <div />
         {getStart().map((s, index) => (
           <span key={index + "dbaui"}></span>
         ))}
