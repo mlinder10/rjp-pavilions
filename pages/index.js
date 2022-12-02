@@ -23,6 +23,7 @@ export default function Home() {
             className={styles.linkIII}
             href="https://www.villageoffredoniany.com/contact-us.html"
             target="_blank"
+            rel="noopener"
           >
             <span className="material-symbols-outlined">send</span>
             <p>Send Us A Message</p>
