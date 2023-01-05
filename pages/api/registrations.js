@@ -1,5 +1,5 @@
-import db from "/utils/db";
 import Registration from "/models/registration";
+import db from "/utils/db";
 
 export default async function handler(req, res) {
   switch (req.method) {

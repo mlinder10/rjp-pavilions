@@ -1,7 +1,20 @@
 import Link from "next/link";
+import { useEffect } from "react";
 import styles from "/styles/index.module.css";
+import axios from "axios";
 
 export default function Home() {
+  useEffect(() => {
+    async function open() {
+      try {
+        axios.get(`${process.env.NEXT_PUBLIC_ROOT}/api/registrations`);
+      } catch (err) {
+        console.error(err.message);
+      }
+    }
+    open();
+  }, []);
+
   return (
     <main className={styles.main}>
       <div className={styles.left}>

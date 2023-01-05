@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Month from "./Month";
 import styles from "/styles/calendar.module.css";
 
 const GAP = 0;
 
 export default function Calendar({ months, regs }) {
+  const [currentMonth, setCurrentMonth] = useState(months[0]);
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.upper}>
@@ -34,6 +36,12 @@ export default function Calendar({ months, regs }) {
       {months.map((month) => (
         <Month gap={GAP} key={month.name} month={month} regs={regs} />
       ))}
+      {/* <Month
+        gap={GAP}
+        key={currentMonth.name}
+        month={currentMonth}
+        regs={regs}
+      /> */}
     </div>
   );
 }

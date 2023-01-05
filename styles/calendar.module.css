@@ -4,6 +4,7 @@
   align-items: center;
   gap: 64px;
   background-color: #ddd;
+  padding-bottom: 64px;
 }
 
 .wrapper {
